@@ -32,14 +32,22 @@ public class UC01CadastrarEmpresa {
 		assertEquals(1, empresaDAO.adiciona(empresa));
 		empresaDAO.exclui("89424232000180");
 	}
+
 	
-	@Test
-	public void CT01UC01FA1CadastrarCnpjInvalido() throws Exception{
-		assertEquals(false, empresa.isValido("00000000000000"));
+
+	
+	public void CT01UC01FA1CadastrarCnpjInvalido1() throws Exception{
+		Empresa empresa2 = new Empresa();
+		try {
+			empresa2.setCnpj("11111111111111");
+		} catch (Exception e) {
+			assertEquals("CNPJ inválido", e.getMessage ());
+		}	
 	}
 	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
+	
 	
 }
